@@ -38,8 +38,7 @@ public class JobData {
 
         for (HashMap<String, String> row : allJobs) {
             String aValue = row.get(field);
-
-            if (!values.contains(aValue)) {
+            if (!containsIgnoreCase(values, aValue)) {
                 values.add(aValue);
             }
         }
@@ -117,6 +116,15 @@ public class JobData {
         }
 
         return jobs;
+    }
+
+    private static boolean containsIgnoreCase(ArrayList<String> list, String value) {
+        for (String s : list) {
+            if (s.equalsIgnoreCase(value)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
