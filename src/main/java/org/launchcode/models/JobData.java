@@ -7,10 +7,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -69,12 +66,12 @@ public class JobData {
      * @param value Value of teh field to search for
      * @return List of all jobs matching the criteria
      */
-    public static ArrayList<HashMap<String, String>> findByColumnAndValue(String column, String value) {
+    public static Iterable<HashMap<String, String>> findByColumnAndValue(String column, String value) {
 
         // load data, if not already loaded
         loadData();
 
-        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        List<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
 
@@ -94,12 +91,12 @@ public class JobData {
      * @param value The search term to look for
      * @return      List of all jobs with at least one field containing the value
      */
-    public static ArrayList<HashMap<String, String>> findByValue(String value) {
+    public static List<HashMap<String, String>> findByValue(String value) {
 
         // load data, if not already loaded
         loadData();
 
-        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        List<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
 
